@@ -1,13 +1,53 @@
-body {
+/* @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto:wght@300&display=swap'); */
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  --primary-color: rgba(219, 45, 45, 0.9);
+  --secondary-color: #cc2900;
+}
+
+body {  
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+}
+
+header {
+  background: url('./img/food_banner.jpg') center center/cover;
+  max-width: 100vw;
+  height: 30vh;  
+}
+
+#nav-head {    
+  background: var(--primary-color);
+  height: 4rem;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+#nav-head .header-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 100%;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0.8rem 1.5rem;
+  border-radius: 1rem;
+  background: brown;
+  color: #fff;
+  font-size: 1.2rem;  
 }

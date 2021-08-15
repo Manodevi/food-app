@@ -1,11 +1,8 @@
+import Header from './components/Layout/Header';
 
 function App() {
   return (
-    <div className="">
-      <header className="">
-        Food App
-      </header>
-    </div>
+    <Header />
   );
 }
 
