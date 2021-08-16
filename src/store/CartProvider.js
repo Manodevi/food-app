@@ -8,15 +8,13 @@ const CartProvider = props => {
 
   const updateItemHandler = item => {};
 
-  const cartContextValue = [
-    {
+  const cartContextValue = {
       items: [],
       totalAmount: 0,
       addItem: addItemHandler,
       removeItem: removeItemHandler,
       updateItem: updateItemHandler
-    }
-  ];
+    };
   return (
     <CartContext.Provider value = {cartContextValue}>
       {props.children}

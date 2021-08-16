@@ -1,15 +1,13 @@
 import React from 'react';
 
 // Creating context to manage cart items
-const initialContext = [
-  {
+const initialContext = {
     items: [],
     totalAmount: 0,
     addItem: (item) => {},
     removeItem: (id) => {},
     updateItem: (item) => {}
-  }
-];
+  };
 
 const CartContext = React.createContext(initialContext);
 
