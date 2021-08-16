@@ -1,5 +1,6 @@
 import CartContext from './cart-context';
 
+// Seperate component for context provider to manage all actions in one file
 const CartProvider = props => {
   const addItemHandler = item => {console.log(item)};
 
