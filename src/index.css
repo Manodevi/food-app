@@ -204,3 +204,67 @@ li .item-price form * {
 .cart-modal {
   margin: 0 auto;
 }
+
+/* Cart Modal List Items */
+
+.cart-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.cart-modal ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-modal ul li {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+}
+
+.cart-modal ul li:first-child,
+.cart-modal ul li:last-child {
+  border-bottom: 1px solid #666;
+  margin-bottom: 1rem;  
+}
+
+.cart-modal ul li:last-child {
+  padding: 0 0 1rem;
+}
+
+.cart-modal ul li:first-child {
+  font-weight: bold;
+  padding: 1rem 0;
+}
+
+.cart-modal ul li > *:last-child {
+  justify-self: flex-end;
+}
+
+.cart-modal .cart-total {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr;  
+  margin-bottom: 1rem;
+}
+
+.cart-modal .cart-total > * {
+  justify-self: flex-end;
+  font-weight: bold;
+}
+
+.cart-modal .cart-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cart-modal .cart-buttons button:last-child {
+  margin-left: 1rem;
+}
