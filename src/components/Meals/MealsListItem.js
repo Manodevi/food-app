@@ -1,6 +1,11 @@
 import MealsForm from './MealsForm';
+import CartContext from '../../store/cart-context';
+import { useContext } from 'react';
 
 const MealsListItem = props => {
+  // use Cart context on form submission - add to cart
+  const cartCtx = useContext(CartContext);
+
   const inputId = `price_${props.id}`;
   const mealsFormInfo = {
       id: props.id,
@@ -8,9 +13,20 @@ const MealsListItem = props => {
         id: inputId, 
         price: props.price,
         type: "number",
-        min: "1"       
+        min: "1"
       },
     price: props.price
+  };
+
+  // Get the number of items from the form submission and frame item object to the cart context
+  const addCartHandler = count => {
+    const item = {
+      id: props.id,
+      name: props.name,
+      price: props.price,
+      count: count
+    };
+    cartCtx.addItem(props.id, item);
   };
 
   return (
@@ -22,7 +38,10 @@ const MealsListItem = props => {
       </div>
       <div className = "item-price">
         <div>AED {props.price.toFixed(2)}</div>
-        <MealsForm {...mealsFormInfo} />
+        <MealsForm 
+          onAddCart = {addCartHandler}
+          {...mealsFormInfo} 
+          />
       </div>
     </li>
   );
