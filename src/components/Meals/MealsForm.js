@@ -3,18 +3,31 @@ import Button from '../UI/Button';
 import React from 'react';
 
 const MealsForm = props => {
-  const ref = React.createRef(props.input.id);
+  const numberOfItemsRef = React.createRef(props.input.id);
 
   const buttonProps = {button: {
     type: "submit",
     className: "btn btn-green"
-  }}
-  const onsubmitHandler = event => {
+  }};
+
+  const submitHandler = event => {
     event.preventDefault();
+    const idPhrase = 'price_meals_';
+
+    // getting input value from ref
+    const enteredInput = numberOfItemsRef.current.value;
+    
+    const itemId = numberOfItemsRef.current.id.substr(idPhrase.length);
+
+    const itemDetails = {
+        id: itemId,
+        itemsCount: +enteredInput,
+        price: +numberOfItemsRef.current.attributes.price.value
+    };
   };
   return (
-      <form onSubmit = {onsubmitHandler}>
-        <Input {...props.input} ref = {ref} />
+      <form onSubmit = {submitHandler}>
+        <Input {...props.input} ref = {numberOfItemsRef} />
         <Button {...buttonProps}>Add</Button>
       </form>
   );
