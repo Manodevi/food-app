@@ -7,7 +7,7 @@ const CartButton = props => {
 
   const buttonProps = {
     button: {
-      className: "cart-header btn", type: "button"
+      className: "cart-header btn", type: "button", onClick: props.onClick
     }
   };
   return (
