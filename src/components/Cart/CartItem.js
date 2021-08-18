@@ -14,13 +14,13 @@ const CartItem = props => {
             <li key = {`cart_${item.id}`}>
               <div>{item.name}</div>
               <div className = "item-count">
-                <Button button = {{className: "item-remove",
+                <Button button = {{className: "item-remove", title: "Remove",
                   onClick: props.onRemoveItem.bind(null, item.id, 'CART')}}
                 > - </Button>
                   
                 {item.count}
                 
-                <Button button = {{className: "item-add",
+                <Button button = {{className: "item-add", title: "Add",
                     onClick: props.onAddItem.bind(null, item, 'CART')}}
                   > + </Button>                
               </div>
@@ -32,7 +32,7 @@ const CartItem = props => {
       </ul>
       <div className = "cart-total">
         <div>Total Amount</div>
-        <div>{`AED ${props.totalAmount}`}</div>
+        <div>{`AED ${props.totalAmount.toFixed(2)}`}</div>
       </div>
     </Fragment>
     );
