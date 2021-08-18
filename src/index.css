@@ -9,7 +9,8 @@
 /* variables */
 
 html {
-  --primary-color: rgba(219, 45, 45, 0.9);
+  --primary-color: #ff5a00;
+  --primary-hover: #FF9459;
   --secondary-color: #cc2900;
 }
 
@@ -50,20 +51,31 @@ p {
 
 /* Button styles */
 .btn {
+  font-weight: bold;
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 0.6rem 1.2rem;
+  padding: 0.7rem 1.2rem;
   border-radius: 1rem;
-  background: brown;
+  background: var(--secondary-color);
   color: #fff;
   font-size: 1.2rem;  
   text-align: center;
   display: inline-block;
 }
 
-.btn:hover {
-  opacity: 0.9;
+.btn-primary {
+  background-color: var(--primary-color);
+}
+
+.btn-primary:hover,
+.btn-white:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-white:hover {
+  border-color: var(--primary-color);
+  color: #fff;
 }
 
 .btn-green {
@@ -75,6 +87,7 @@ p {
   color: var(--secondary-color);
   border: 1px solid var(--secondary-color);
 }
+
 /* Input Styles */
 
 input {
@@ -100,7 +113,7 @@ header {
 
 #nav-head {    
   background: var(--primary-color);
-  height: 4rem;
+  height: 5rem;
   position: fixed;
   left: 0;
   top: 0;
@@ -116,6 +129,23 @@ header {
   margin: 0 auto;
   padding: 0 2rem;
   height: 100%;
+}
+
+.cart-header > *:nth-child(2) {
+  margin: 0 0.5rem;
+}
+
+.cart-header:hover {
+  background-color: #92320c;
+}
+
+/* Button animation on cart updates */
+.btn-animation {
+  transform: scale(1.15);
+}
+
+.btn.btn-animation {
+  transition: width, height 0.3s ease-out;
 }
 
 /* main content styles */
@@ -230,19 +260,12 @@ li .item-price form * {
   grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
   margin-bottom: 1rem;  
-}
-
-.cart-modal ul li:first-child,
-.cart-modal ul li:last-child {
-  border-bottom: 1px solid #666;
+  border-bottom: 1px solid var(--secondary-color);
+  padding: 1rem 0;
 }
 
 .cart-modal ul li:last-child {
   padding: 0 0 1rem;
-}
-
-.cart-modal ul li:first-child {
-  padding: 1rem 0;
 }
 
 .cart-modal ul li:first-child > *:nth-child(2) {
@@ -287,6 +310,7 @@ li .item-price form * {
   background: transparent;
   font-size: 1rem;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .cart-modal .item-count button.item-remove {
