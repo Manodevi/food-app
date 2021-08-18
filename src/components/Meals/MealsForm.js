@@ -8,7 +8,7 @@ const MealsForm = props => {
 
   const buttonProps = {button: {
     type: "submit",
-    className: "btn btn-green"
+    className: "btn btn-primary"
   }};
 
   const submitHandler = event => {
