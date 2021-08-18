@@ -23,10 +23,10 @@ const MealsListItem = props => {
     const item = {
       id: props.id,
       name: props.name,
-      price: props.price,
-      count: count
+      price: +props.price,
+      count: +count
     };
-    cartCtx.addItem(props.id, item);
+    cartCtx.addItem(item, '');
   };
 
   return (
