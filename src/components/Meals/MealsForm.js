@@ -14,7 +14,7 @@ const MealsForm = props => {
   const submitHandler = event => {
     event.preventDefault();
     // getting input value from ref
-    const enteredInput = numberOfItemsRef.current.value;
+    const enteredInput = +numberOfItemsRef.current.value;
     props.onAddCart(enteredInput);
   };
   
