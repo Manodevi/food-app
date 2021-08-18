@@ -13,7 +13,8 @@ const MealsListItem = props => {
         id: inputId, 
         price: props.price,
         type: "number",
-        min: "1"
+        min: "1",
+        defaultValue: "1"
       },
     price: props.price
   };
