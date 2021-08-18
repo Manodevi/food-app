@@ -45,7 +45,7 @@ p {
 
 .card-light {
   background: #fff;
-  color: #333;
+  color: black;
 }
 
 /* Button styles */
@@ -213,6 +213,9 @@ li .item-price form * {
   align-items: center;
   justify-content: center;
   width: 100%;
+  font-weight: bold;
+  max-height: 50vh;
+  overflow-y: auto;
 }
 
 .cart-modal ul {
@@ -226,12 +229,12 @@ li .item-price form * {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
+  margin-bottom: 1rem;  
 }
 
 .cart-modal ul li:first-child,
 .cart-modal ul li:last-child {
   border-bottom: 1px solid #666;
-  margin-bottom: 1rem;  
 }
 
 .cart-modal ul li:last-child {
@@ -239,8 +242,11 @@ li .item-price form * {
 }
 
 .cart-modal ul li:first-child {
-  font-weight: bold;
   padding: 1rem 0;
+}
+
+.cart-modal ul li:first-child > *:nth-child(2) {
+  justify-self: center;
 }
 
 .cart-modal ul li > *:last-child {
@@ -252,11 +258,11 @@ li .item-price form * {
   display: grid;
   grid-template-columns: 2fr 1fr;  
   margin-bottom: 1rem;
+  font-size: 1.2rem;
 }
 
 .cart-modal .cart-total > * {
-  justify-self: flex-end;
-  font-weight: bold;
+  justify-self: flex-end;  
 }
 
 .cart-modal .cart-buttons {
@@ -267,4 +273,26 @@ li .item-price form * {
 
 .cart-modal .cart-buttons button:last-child {
   margin-left: 1rem;
+}
+
+.cart-modal .item-count {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cart-modal .item-count button {
+  border: 1px solid #333;
+  padding: 0.3rem 0.6rem;
+  background: transparent;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.cart-modal .item-count button.item-remove {
+  color: red;
+}
+
+.cart-modal .item-count button.item-add {
+  color: green;
 }
