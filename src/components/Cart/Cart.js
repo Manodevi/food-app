@@ -11,13 +11,28 @@ const Cart = props => {
   const totalAmount = cartCtx.totalAmount;
 
   let haveItems = false;
+
+  const cartAddItemHandler = (item, from) => {
+    cartCtx.addItem(item, from);
+  }
+
+  const cartRemoveItemHandler = (id, from) => {
+    cartCtx.removeItem(id, from);
+  }
+
   if(items.length > 0) {
     haveItems = true;
   }
 
   return (    
       <Card className = "cart-modal card-light">        
-        <CartItem items = {items} totalAmount = {totalAmount} />
+        {haveItems && <CartItem 
+                            items = {items}
+                            totalAmount = {totalAmount}
+                            onAddItem = {cartAddItemHandler}
+                            onRemoveItem = {cartRemoveItemHandler}
+                            />
+        }
         
         { !haveItems && (<p>No items in the cart</p>) }
         <div className = "cart-buttons">
