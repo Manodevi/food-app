@@ -1,11 +1,9 @@
 import { useState } from 'react';
 
 const useCheckoutValidation = () => {
-  const [ inputValid, setInputValid ] = useState();
-  const [ inputValue, setInputValue ] = useState();
+  const [ inputValid, setInputValid ] = useState('');
   
-  const blurchangeHandler = inputValid => {
-    setInputValue(inputValid.value);
+  const blurchangeHandler = inputValid => {    
     setInputValid(inputValid.valid);
   };
 
