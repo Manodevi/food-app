@@ -1,10 +1,14 @@
 import Card from '../UI/Card';
 import Button from '../UI/Button';
 import CartContext from '../../store/cart-context';
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import CartItem from './CartItem';
+import CheckoutForm from '../Checkout/CheckoutForm.js';
 
 const Cart = props => {
+  // state to show checkout form
+  const [ isCheckout, setIsCheckout ] = useState(false);
+
   // to get details from cart context
   const cartCtx = useContext(CartContext);
   const items = [...cartCtx.items];
@@ -23,6 +27,10 @@ const Cart = props => {
   if(items.length > 0) {
     haveItems = true;
   }
+
+  const checkoutHandler = () => {
+    setIsCheckout(true);
+  };
 
   return (    
       <Card className = "cart-modal card-light">        
@@ -45,10 +53,13 @@ const Cart = props => {
             >Close</Button>
             {haveItems && <Button button = {
               {
-                className: 'btn btn-primary'
+                className: 'btn btn-primary',
+                onClick: checkoutHandler
               }
             }>Order</Button>}
           </div>
+
+          {isCheckout && <CheckoutForm />}
       </Card>
   );
 };
