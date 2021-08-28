@@ -8,19 +8,20 @@ const CheckoutInput = props => {
   const onBlurChangeHandler = () => {
     const inputValid = props.blurchangeHandler(inputRef.current.value);
     const inputName = inputRef.current.name;
-    console.log(inputName);
     blurchangeHandler(inputValid);
     props.onFormInput(inputName, isValid);
   };
 
   return (
-    <div className="form-controls">
+    <div className={isValid ? "form-controls" : "form-controls invalid"}>
       <label htmlFor={props.input.name}>{props.label}</label>
       <input {...props.input} 
               ref = {inputRef} 
               onBlur = {onBlurChangeHandler} 
               onChange = {onBlurChangeHandler} />
+      { isValid === false && <p>{props.errorMessage}</p> }
     </div>
+
   );
 };
 
