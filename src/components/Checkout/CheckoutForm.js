@@ -32,7 +32,8 @@ const CheckoutForm = () => {
           valid: name.trim().length !== 0
         };
       },
-      label: "Name"
+      label: "Name",
+      errorMessage: "Please enter a valid name."
     },
     {
       input: {
@@ -45,6 +46,7 @@ const CheckoutForm = () => {
         };
       },
       label: "Email",
+      errorMessage: "Please enter a valid email."
     }, 
     {
       input: {
@@ -56,7 +58,8 @@ const CheckoutForm = () => {
           valid: street.trim().length !== 0
         };
       },
-      label: "Street"
+      label: "Street",
+      errorMessage: "Please enter a valid street."
     },
     {
       input: {
@@ -68,7 +71,8 @@ const CheckoutForm = () => {
           valid: city.trim().length !== 0
         };
       },
-      label: "city"
+      label: "city",
+      errorMessage: "Please enter a valid city."
     },
     {
       input: {
@@ -80,14 +84,21 @@ const CheckoutForm = () => {
           valid: zipcode.trim().length < 6 && zipcode.trim().length > 0
         };
       },
-      label: "Zip Code"
+      label: "Zip Code",
+      errorMessage: "Please enter a valid zip code."
     }
   ];
   
 
-  const sumbitHandler = event => {
-    console.log(isFormInputValid);
-    event.preventDefault();    
+  const sumbitHandler = event => {    
+    event.preventDefault();
+    for(let inputValid in isFormInputValid) {
+      if(!isFormInputValid[inputValid]) {        
+        return;
+      }
+    }
+
+    console.log('Submission');
   };
 
   return (
