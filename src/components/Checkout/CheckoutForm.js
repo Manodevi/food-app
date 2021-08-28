@@ -26,26 +26,35 @@ const CheckoutForm = () => {
       input: {
         type: 'text',
         name: 'checkout_name'
-      },    
+      },
       blurchangeHandler: (name) => {      
-        return { value:name,
+        return { value: name,
           valid: name.trim().length !== 0
         };
-      },    
+      },
       label: "Name"
     },
     {
       input: {
-        type: 'email',
+        type: 'text',
         name: 'checkout_email',
       },
+      blurchangeHandler: (email) => {      
+        return { value: email,
+          valid: email.includes('@')
+        };
+      },
       label: "Email",
-      inputsValidity: allInputsValidity
     }, 
     {
       input: {
         type: 'text',
         name: 'checkout_street',
+      },
+      blurchangeHandler: (street) => {      
+        return { value: street,
+          valid: street.trim().length !== 0
+        };
       },
       label: "Street"
     },
@@ -54,12 +63,22 @@ const CheckoutForm = () => {
         type: 'text',
         name: 'checkout_city',
       },
+      blurchangeHandler: (city) => {      
+        return { value: city,
+          valid: city.trim().length !== 0
+        };
+      },
       label: "city"
     },
     {
       input: {
         type: 'text',
         name: 'checkout_zipcode',
+      },
+      blurchangeHandler: (zipcode) => {      
+        return { value: zipcode,
+          valid: zipcode.trim().length < 6 && zipcode.trim().length > 0
+        };
       },
       label: "Zip Code"
     }
@@ -68,8 +87,7 @@ const CheckoutForm = () => {
 
   const sumbitHandler = event => {
     console.log(isFormInputValid);
-    event.preventDefault();
-    console.log('order');
+    event.preventDefault();    
   };
 
   return (
