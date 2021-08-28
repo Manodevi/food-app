@@ -9,6 +9,7 @@ const allInputsValidity = {
   checkout_city: '',
   checkout_zipcode: ''
 };
+
 const CheckoutForm = () => {
   // state for every input value validation - for form
   const [isFormInputValid, setIsFormInputValid] = useState(allInputsValidity);
@@ -21,51 +22,48 @@ const CheckoutForm = () => {
     });
   };
   
-  const nameInput = {
-    input: {
-      type: 'text',
-      name: 'checkout_name'
-    },    
-    blurchangeHandler: (name) => {      
-      return { value:name,
-        valid: name.trim().length !== 0
-      };
-    },    
-    label: "Name"
-  };
-
-  const emailInput = {
-    input: {
-      type: 'email',
-      name: 'checkout_email',
+  const formInputs = [{
+      input: {
+        type: 'text',
+        name: 'checkout_name'
+      },    
+      blurchangeHandler: (name) => {      
+        return { value:name,
+          valid: name.trim().length !== 0
+        };
+      },    
+      label: "Name"
     },
-    label: "Email",
-    inputsValidity: allInputsValidity
-  };
-
-  const streetInput = {
-    input: {
-      type: 'text',
-      name: 'checkout_street',
+    {
+      input: {
+        type: 'email',
+        name: 'checkout_email',
+      },
+      label: "Email",
+      inputsValidity: allInputsValidity
+    }, 
+    {
+      input: {
+        type: 'text',
+        name: 'checkout_street',
+      },
+      label: "Street"
     },
-    label: "Street"
-  };
-
-  const cityInput = {
-    input: {
-      type: 'text',
-      name: 'checkout_city',
+    {
+      input: {
+        type: 'text',
+        name: 'checkout_city',
+      },
+      label: "city"
     },
-    label: "city"
-  };
-
-  const zipInput = {
-    input: {
-      type: 'text',
-      name: 'checkout_zipcode',
-    },
-    label: "Zip Code"
-  };
+    {
+      input: {
+        type: 'text',
+        name: 'checkout_zipcode',
+      },
+      label: "Zip Code"
+    }
+  ];
   
 
   const sumbitHandler = event => {
@@ -77,11 +75,13 @@ const CheckoutForm = () => {
   return (
       <div>
         <form onSubmit = {sumbitHandler}>
-          <CheckoutInput {...nameInput}  onFormInput = {formInputHandler} />
-          <CheckoutInput {...emailInput}  />
-          <CheckoutInput {...streetInput}  />
-          <CheckoutInput {...cityInput}  />
-          <CheckoutInput {...zipInput}  />
+          {formInputs.map(input => (
+              <CheckoutInput 
+                  key = {input.input.name}
+                  {...input}
+                  onFormInput = {formInputHandler} />
+            ))
+          }
           <Button button = {
               { 
                 className: 'btn btn-white'
