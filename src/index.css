@@ -320,3 +320,20 @@ li .item-price form * {
 .cart-modal .item-count button.item-add {
   color: green;
 }
+
+/* Checkout form */
+.checkout-form {
+  width: 100%;
+}
+
+.checkout-form .form-controls {
+  margin: 0.8rem 0;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  /* grid-template-rows: 1fr; */
+  /* align-items: center; */
+}
+
+.checkout-form .form-controls.invalid {
+  color: red;
+}
