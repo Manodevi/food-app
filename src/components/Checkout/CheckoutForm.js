@@ -1,6 +1,7 @@
 import CheckoutInput from './CheckoutInput';
 import Button from '../UI/Button';
-import { useState } from 'react';
+import CartContext from '../../store/cart-context';
+import { useState, useContext } from 'react';
 
 const allInputsValidity = {
   checkout_name: '', 
@@ -11,6 +12,8 @@ const allInputsValidity = {
 };
 
 const CheckoutForm = () => {
+  const cartDetails = useContext(CartContext);
+
   // state for every input value validation - for form
   const [isFormInputValid, setIsFormInputValid] = useState(allInputsValidity);
   
@@ -95,6 +98,7 @@ const CheckoutForm = () => {
 
   const sumbitHandler = event => {    
     event.preventDefault();
+    const formInputs = Object.entries(isFormInputValid);
     // to find for invalid input
     const formIValid = formInputs.find(eachInput => !eachInput[1].isValid);
     
@@ -103,12 +107,17 @@ const CheckoutForm = () => {
     }
 
     // collect customer information to make order to submit
-    const formInputs = Object.entries(isFormInputValid);
     const customerDetails = formInputs.reduce((details, eachInput) =>{
       details[eachInput[0]] = eachInput[1].value;
       return details;
     }, {});
-    console.log(customerDetails);    
+
+    const orderDetails = {
+      customer_details: customerDetails,
+      item_details: cartDetails.items   // get cart items from cart context
+    };
+     
+    console.log(orderDetails);
   };
 
   return (
@@ -126,7 +135,7 @@ const CheckoutForm = () => {
                 className: 'btn btn-white'
               }
             }
-            >Close</Button>
+            >Order</Button>
         </form>
       </div>
       );
