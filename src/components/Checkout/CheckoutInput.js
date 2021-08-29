@@ -3,23 +3,25 @@ import { useRef } from 'react';
 
 const CheckoutInput = props => {
   const inputRef = useRef();
-  const [isValid, blurchangeHandler] = useCheckoutValidation();
+  const [isValid, inputValue, blurchangeHandler] = useCheckoutValidation();
 
   const onBlurChangeHandler = () => {
     const inputValid = props.blurchangeHandler(inputRef.current.value);
     const inputName = inputRef.current.name;
     blurchangeHandler(inputValid);
-    props.onFormInput(inputName, isValid);
+    props.onFormInput(inputName, inputValue, isValid);
   };
 
   return (
-    <div className={isValid ? "form-controls" : "form-controls invalid"}>
+    <div className={isValid === false ? "form-controls invalid" : "form-controls"}>
       <label htmlFor={props.input.name}>{props.label}</label>
-      <input {...props.input} 
-              ref = {inputRef} 
-              onBlur = {onBlurChangeHandler} 
-              onChange = {onBlurChangeHandler} />
-      { isValid === false && <p>{props.errorMessage}</p> }
+      <div>
+        <input {...props.input} 
+                ref = {inputRef} 
+                onBlur = {onBlurChangeHandler} 
+                onChange = {onBlurChangeHandler} />
+        { isValid === false && <p>{props.errorMessage}</p> }
+      </div>
     </div>
 
   );
