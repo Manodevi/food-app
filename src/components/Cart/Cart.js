@@ -51,6 +51,7 @@ const Cart = props => {
     .then(data => setIsSubmittedOrder(true))
     .catch(error => console.log(error));
     setIsSubmittingOrder(false);    
+    cartCtx.clearCart();
   };
 
   const cartContent = <React.Fragment>{haveItems && <CartItem 
