@@ -11,7 +11,7 @@ const allInputsValidity = {
   checkout_zipcode: ''
 };
 
-const CheckoutForm = () => {
+const CheckoutForm = props => {
   const cartDetails = useContext(CartContext);
 
   // state for every input value validation - for form
@@ -117,7 +117,7 @@ const CheckoutForm = () => {
       item_details: cartDetails.items   // get cart items from cart context
     };
      
-    console.log(orderDetails);
+    props.onConfirm(orderDetails);    
   };
 
   return (
