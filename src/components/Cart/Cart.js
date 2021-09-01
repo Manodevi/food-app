@@ -63,12 +63,15 @@ const Cart = props => {
     }
 
     { !haveItems && (<p>No items in the cart</p>) }
-    <div className = "cart-buttons">
-    <Button button = {{ className: 'btn btn-white', onClick: props.onClose}}>Close</Button>
-    {haveItems && <Button button = {{className: 'btn btn-primary', onClick: checkoutHandler}}>Order</Button>}
-    </div>
+    {!isCheckout && 
+      <div className = "cart-buttons">
+      <Button button = {{ className: 'btn btn-white', onClick: props.onClose}}>Close</Button>
+      {haveItems && <Button button = {{className: 'btn btn-primary', onClick: checkoutHandler}}>Order</Button>}
+      </div>
+    }
 
-    {isCheckout && <CheckoutForm onConfirm = {submitHandler} />}
+    {isCheckout && <CheckoutForm onConfirm = {submitHandler} 
+      onClose = {props.onClose}/>}
     </React.Fragment>;
 
     const submittingContent = <p>Sending Order details....</p>;
@@ -78,11 +81,11 @@ const Cart = props => {
       </React.Fragment>;
 
   return (    
-      <Card className = "cart-modal card-light">        
+      <div className = "cart-modal card-light">        
         {!isSubmittingOrder && !isSubmittedOrder && cartContent}
         {isSubmittingOrder && !isSubmittedOrder && submittingContent}
         {!isSubmittingOrder && isSubmittedOrder && submittedContent}
-      </Card>
+      </div>
   );
 };
 
