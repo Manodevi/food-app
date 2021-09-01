@@ -130,12 +130,10 @@ const CheckoutForm = props => {
                   onFormInput = {formInputHandler} />
             ))
           }
-          <Button button = {
-              { 
-                className: 'btn btn-white'
-              }
-            }
-            >Order</Button>
+          <div className = "cart-buttons">
+            <Button button = {{ className: 'btn btn-white', onClick: props.onClose}}>Close</Button>
+            <Button button = {{className: 'btn btn-white'}}>Order</Button>
+          </div>
         </form>
       </div>
       );
